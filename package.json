@@ -7,6 +7,7 @@
     "react-dom": "^16.8.5",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.8",
+    "reactstrap": "^7.1.0",
     "redux": "^4.0.1"
   },
   "scripts": {
@@ -25,10 +26,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
-    "flow-bin": "^0.95.1",
-    "flow-typed": "^2.5.1",
-    "redux-mock-store": "^1.5.3"
+    "enzyme": "3.4.1",
+    "enzyme-adapter-react-16": "1.2.0",
+    "flow-bin": "0.78.0",
+    "flow-typed": "2.5.1",
+    "redux-mock-store": "1.5.3"
   }
 }
