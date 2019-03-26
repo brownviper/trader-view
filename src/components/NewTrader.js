@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
 class NewTrader extends Component {
+
+    handleFormSubmit = (event: Event) => {
+        event.preventDefault();
+    };
+
     render() {
         return (
             <div>
-                <h2>Add New Trader</h2>
+                <form onSubmit={this.handleFormSubmit}>
+                    <button type="submit">Add new trader</button>
+                </form>
             </div>
         );
     }
