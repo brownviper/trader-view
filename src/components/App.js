@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import React from 'react';
+
 import '../assets/App.css';
+
 import NewTrader from './NewTrader';
 import TradersTable from './TradersTable';
+import StockTable from './StockTable';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <NewTrader />
-        <TradersTable />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <NewTrader />
+    <TradersTable />
+    <StockTable />
+  </div>
+);
 
 export default App;
