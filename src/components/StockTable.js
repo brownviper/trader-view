@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Table} from 'reactstrap';
 import { connect } from 'react-redux';
 import type { State } from '../types';
+import TraderProcessor from "../processors/TraderProcessor";
 
 export type Props = {
     traders: Traders
@@ -15,9 +16,8 @@ class StockTable extends Component<Props> {
     };
 
     render() {
-        const sortedTraders = this.props.traders.sort((a, b) => {
-            return new Date(b.timeStamp) - new Date(a.timeStamp)
-        });
+        const data = new TraderProcessor(this.props.traders).calculateStockExchangeParams();
+
         return (
 
             <div>
@@ -27,20 +27,23 @@ class StockTable extends Component<Props> {
                         <thead>
                         <tr>
                             <th />
-                            <th>Dividend Yield</th>
+                            <th>Symbol</th>
+                            <th>Dividend Yield (fixed div=7.08)</th>
                             <th>P/E Ratio</th>
                             <th>Geometric Mean</th>
                             <th>Weighted Stock Price</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {sortedTraders.map(trader => {
+                        {data.map(item => {
                             return (
-                                <tr key={trader.id}>
+                                <tr key={item.symbol}>
                                     <th />
-                                    <td>{trader.symbol}</td>
-                                    <td>{trader.price}</td>
-                                    <td>{trader.count}</td>
+                                    <td>{item.symbol}</td>
+                                    <td>{item.dividendYield}</td>
+                                    <td>{item.peRatio}</td>
+                                    <td>{item.geometricMean}</td>
+                                    <td>{item.volumeWeighted}</td>
                                 </tr>
                             );
                         })}
