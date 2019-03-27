@@ -63,24 +63,24 @@ class NewTrader extends Component<Props, State> {
             paddingRight: '50px'
         };
         return (
-            <div className="container-fluid margins">
-                <form onSubmit={this.handleFormSubmit}>
-                    <div className="col-10">
-                        <div>
+            <div className="container">
+                <div className="col-md-6">
+                    <form onSubmit={this.handleFormSubmit}>
+                        <div className="form-group">
                             <label>Symbol</label>
-                            <input placeholder="enter trader symbol" value={this.state.symbol} onChange={this.handleSymbolChange}/>
+                            <input className="form-control" placeholder="enter trader symbol" value={this.state.symbol} onChange={this.handleSymbolChange}/>
                         </div>
-                    </div>
-                    <div className="col-10">
-                        <label>Price</label>
-                        <input placeholder="share price" value={this.state.price} onChange={this.handlePriceChange}/>
-                    </div>
-                    <div className="col-10">
-                        <label>Shares count</label>
-                        <input placeholder="shares count" value={this.state.count} onChange={this.handleCountChange}/>
-                    </div>
-                    <button type="submit">Add new trader</button>
-                </form>
+                        <div className="form-group">
+                            <label>Price</label>
+                            <input className="form-control" placeholder="price per share" value={this.state.price} onChange={this.handlePriceChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Shares count</label>
+                            <input className="form-control" placeholder="total shares count" value={this.state.count} onChange={this.handleCountChange}/>
+                        </div>
+                        <button className="btn btn-primary" type="submit">Add new trader</button>
+                    </form>
+                </div>
             </div>
         );
     }
