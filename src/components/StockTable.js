@@ -18,9 +18,12 @@ class StockTable extends Component<Props> {
     render() {
         const data = new TraderProcessor(this.props.traders).calculateStockExchangeParams();
 
-        return (
+            const divStyle = {
+              margin: '50px'
+            };
 
-            <div>
+        return (
+            <div className='container' style={divStyle}>
                 <h3>Stock yield</h3>
                 <div>
                     <Table striped>

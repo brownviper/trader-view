@@ -18,9 +18,14 @@ class TradersTable extends Component<Props> {
         const sortedTraders = this.props.traders.sort((a, b) => {
             return new Date(b.timeStamp) - new Date(a.timeStamp)
         });
+
+        const divStyle = {
+            margin: '50px'
+        };
+
         return (
 
-            <div>
+            <div className='container' style={divStyle}>
                 <h3>Traders Table</h3>
                 <div>
                     <Table striped>

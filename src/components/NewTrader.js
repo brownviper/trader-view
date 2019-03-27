@@ -59,11 +59,10 @@ class NewTrader extends Component<Props, State> {
 
     render() {
         const divStyle = {
-            display: 'block',
-            paddingRight: '50px'
+            margin: '50px'
         };
         return (
-            <div className="container">
+            <div className='container' style={divStyle}>
                 <div className="col-md-6">
                     <form onSubmit={this.handleFormSubmit}>
                         <div className="form-group">
