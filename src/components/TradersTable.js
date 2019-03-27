@@ -15,7 +15,11 @@ class TradersTable extends Component<Props> {
     };
 
     render() {
+        const sortedTraders = this.props.traders.sort((a, b) => {
+            return new Date(b.timeStamp) - new Date(a.timeStamp)
+        });
         return (
+
             <div>
                 <h3>Traders Table</h3>
                 <div>
@@ -29,9 +33,9 @@ class TradersTable extends Component<Props> {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.props.traders.map(trader => {
+                            {sortedTraders.map(trader => {
                                 return (
-                                    <tr>
+                                    <tr key={trader.id}>
                                         <th />
                                         <td>{trader.symbol}</td>
                                         <td>{trader.price}</td>
