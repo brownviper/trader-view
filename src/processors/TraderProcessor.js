@@ -41,9 +41,21 @@ class TraderProcessor {
     dividendYield,
     peRatio: this.calculatePeRatio(dividendYield, parseFloat(tradeCollection.price)),
     geometricMean: this.calculateGeometricMean(tradeCollection),
-    volumeWeighted: 1.0
+    volumeWeighted: this.caclcuateVolumeWeightedStockPrice(tradeCollection)
    }
   });
+ }
+
+ static caclcuateVolumeWeightedStockPrice(collection: Traders) {
+  var numerator = 0.0;
+  var denominator = 0.0;
+
+  collection.forEach(item => {
+   numerator = numerator + (parseFloat(item.price) * parseFloat(item.count));
+   denominator = denominator + parseFloat(item.count);
+  });
+
+  return (numerator / denominator).toPrecision(2);
  }
 
  static calculateGeometricMean(collection: Traders) {

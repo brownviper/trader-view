@@ -119,18 +119,39 @@ describe('trade stock processor', () => {
                 id: '',
                 symbol: '',
                 price: '10.00',
-                count: '',
+                count: '10',
                 timeStamp: ''
             },
             {
                 id: '',
                 symbol: '',
                 price: '45.00',
-                count: '',
+                count: '20',
                 timeStamp: ''
             }
         ];
 
        expect(TradeProcessor.calculateGeometricMean(traders)).toEqual('21');
+    });
+
+    it('should calculate the Volume Weighted Stock Price', () => {
+        const traders: Traders = [
+            {
+                id: '',
+                symbol: '',
+                price: '10.00',
+                count: '10',
+                timeStamp: ''
+            },
+            {
+                id: '',
+                symbol: '',
+                price: '45.00',
+                count: '20',
+                timeStamp: ''
+            }
+        ];
+
+       expect(TradeProcessor.caclcuateVolumeWeightedStockPrice(traders)).toEqual('33');
     });
 });
