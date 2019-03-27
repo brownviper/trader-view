@@ -108,4 +108,8 @@ describe('trade stock processor', () => {
 
         expect(TradeProcessor.calculateDividendYield(1.2, traders)).toEqual("2.7");
     });
+
+    it('should calculate the PE/Ratio', () => {
+       expect(TradeProcessor.calculatePeRatio(2.7, 45.00)).toEqual('17');
+    });
 });

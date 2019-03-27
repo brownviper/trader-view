@@ -29,12 +29,17 @@ class TraderProcessor {
   return uniqueSymbols;
  }
 
+ static calculatePeRatio(dividendYield: number, price: number) {
+  return (price/dividendYield).toPrecision(2);
+ }
+
  calculateStockExchangeParams() {
-  arrangeTraders.map(tradeCollection => {
+  arrangeTraders().map(tradeCollection => {
+   const dividendYield = this.calculateDividendYield(7.08, tradeCollection);
    return {
     symbol: item.symbol,
-    dividendYield: this.calculateDividendYield(7.08, tradeCollection),
-    peRatio: 1.0,
+    dividendYield,
+    peRatio: this.calculatePeRatio(dividendYield, parseFloat(tradeCollection.price)),
     geometricMean: 1.0,
     volumeWeighted: 1.0
    }
@@ -48,7 +53,6 @@ class TraderProcessor {
   });
 
   return (dividend / parseFloat(sortedTraders[0].price) * 100.00).toPrecision(2);
-
  }
 }
 
