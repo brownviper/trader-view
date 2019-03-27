@@ -106,11 +106,11 @@ describe('trade stock processor', () => {
             }
         ];
 
-        expect(TradeProcessor.calculateDividendYield(1.2, traders)).toEqual('2.7');
+        expect(TradeProcessor.calculateDividendYield(1.2, traders)).toEqual('2.67');
     });
 
     it('should calculate the PE/Ratio', () => {
-       expect(TradeProcessor.calculatePeRatio(2.7, 45.00)).toEqual('17');
+       expect(TradeProcessor.calculatePeRatio(2.7, 45.00)).toEqual('16.67');
     });
 
     it('should calculate the GeometricMean', () => {
@@ -131,7 +131,7 @@ describe('trade stock processor', () => {
             }
         ];
 
-       expect(TradeProcessor.calculateGeometricMean(traders)).toEqual('21');
+       expect(TradeProcessor.calculateGeometricMean(traders)).toEqual('21.21');
     });
 
     it('should calculate the Volume Weighted Stock Price', () => {
@@ -152,6 +152,54 @@ describe('trade stock processor', () => {
             }
         ];
 
-       expect(TradeProcessor.caclcuateVolumeWeightedStockPrice(traders)).toEqual('33');
+       expect(TradeProcessor.caclcuateVolumeWeightedStockPrice(traders)).toEqual('33.33');
+    });
+
+    it('should return the full stock exchange data', () => {
+        const traders: Traders = [
+            {
+                id: '',
+                symbol: 'aaa',
+                price: '10.00',
+                count: '10',
+                timeStamp: 'Wed Mar 28 2019 14:09:24 GMT+0000 (Greenwich Mean Time)'
+            },
+            {
+                id: '',
+                symbol: 'bbb',
+                price: '45.00',
+                count: '20',
+                timeStamp: 'Wed Mar 27 2019 14:09:24 GMT+0000 (Greenwich Mean Time)'
+            },
+            {
+                id: '',
+                symbol: 'aaa',
+                price: '45.00',
+                count: '20',
+                timeStamp: 'Wed Mar 26 2019 14:09:24 GMT+0000 (Greenwich Mean Time)'
+            }
+        ];
+
+        const expected = [
+            {
+                symbol: 'aaa',
+                dividendYield: '70.80',
+                peRatio: '0.14',
+                geometricMean: '21.21',
+                volumeWeighted: '33.33'
+            },
+            {
+                symbol: 'bbb',
+                dividendYield: '15.73',
+                peRatio: '2.86',
+                geometricMean: '45.00',
+                volumeWeighted: '45.00'
+            }
+        ];
+
+        const processor = new TradeProcessor(traders);
+
+        expect(processor.calculateStockExchangeParams()).toEqual(expected);
+
     });
 });

@@ -30,20 +30,24 @@ class TraderProcessor {
  }
 
  calculateStockExchangeParams() {
-  arrangeTraders().map(tradeCollection => {
-   const dividendYield = this.calculateDividendYield(7.08, tradeCollection);
+  return this.arrangeTraders().map(tradeCollection => {
+   const dividendYield = TraderProcessor.calculateDividendYield(7.08, tradeCollection.traders);
+
    return {
-    symbol: item.symbol,
+    symbol: tradeCollection.symbol,
     dividendYield,
-    peRatio: this.calculatePeRatio(dividendYield, parseFloat(tradeCollection.price)),
-    geometricMean: this.calculateGeometricMean(tradeCollection),
-    volumeWeighted: this.caclcuateVolumeWeightedStockPrice(tradeCollection)
+    peRatio: TraderProcessor.calculatePeRatio(
+        dividendYield,
+        TraderProcessor.orderTraders(tradeCollection.traders)[0].price
+    ),
+    geometricMean: TraderProcessor.calculateGeometricMean(tradeCollection.traders),
+    volumeWeighted: TraderProcessor.caclcuateVolumeWeightedStockPrice(tradeCollection.traders)
    }
   });
  }
 
  static calculatePeRatio(dividendYield: number, price: number) {
-  return (price/dividendYield).toPrecision(2);
+  return (price/dividendYield).toFixed(2);
  }
 
  static caclcuateVolumeWeightedStockPrice(collection: Traders) {
@@ -55,7 +59,7 @@ class TraderProcessor {
    denominator = denominator + parseFloat(item.count);
   });
 
-  return (numerator / denominator).toPrecision(2);
+  return (numerator / denominator).toFixed(2);
  }
 
  static calculateGeometricMean(collection: Traders) {
@@ -65,16 +69,20 @@ class TraderProcessor {
    accumulator = accumulator * parseFloat(item.price);
   });
 
-  return Math.pow(accumulator, 1/collection.length).toPrecision(2);
+  return Math.pow(accumulator, 1/collection.length).toFixed(2);
+ }
+
+ static orderTraders(traders: Traders) {
+  return traders.sort((a, b) => {
+   return new Date(b.timeStamp) - new Date(a.timeStamp)
+  });
  }
 
  static calculateDividendYield(dividend: number, collection: Traders) {
 
-  const sortedTraders = collection.sort((a, b) => {
-   return new Date(b.timeStamp) - new Date(a.timeStamp)
-  });
+  const sortedTraders = TraderProcessor.orderTraders(collection);
 
-  return (dividend / parseFloat(sortedTraders[0].price) * 100.00).toPrecision(2);
+  return (dividend / parseFloat(sortedTraders[0].price) * 100.00).toFixed(2);
  }
 }
 
