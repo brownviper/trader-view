@@ -1,9 +1,17 @@
 // @flow
 
-import Traders from '../types';
+import Traders from '../types/traders';
 
 class TraderProcessor {
- constructor(traders: Traders);
+ traders: Traders = [];
+
+ constructor(traders: Traders){
+  this.traders = traders;
+ }
+
+ calculateDividendYield() {
+  return this.traders;
+ }
 }
 
 export default TraderProcessor;
