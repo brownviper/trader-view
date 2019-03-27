@@ -29,10 +29,6 @@ class TraderProcessor {
   return uniqueSymbols;
  }
 
- static calculatePeRatio(dividendYield: number, price: number) {
-  return (price/dividendYield).toPrecision(2);
- }
-
  calculateStockExchangeParams() {
   arrangeTraders().map(tradeCollection => {
    const dividendYield = this.calculateDividendYield(7.08, tradeCollection);
@@ -44,6 +40,10 @@ class TraderProcessor {
     volumeWeighted: this.caclcuateVolumeWeightedStockPrice(tradeCollection)
    }
   });
+ }
+
+ static calculatePeRatio(dividendYield: number, price: number) {
+  return (price/dividendYield).toPrecision(2);
  }
 
  static caclcuateVolumeWeightedStockPrice(collection: Traders) {
