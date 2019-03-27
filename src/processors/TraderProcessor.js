@@ -22,7 +22,7 @@ class TraderProcessor {
  getUniqueSymbols() {
   var uniqueSymbols = [];
 
-  const res = this.traders.map(trader => {
+  this.traders.map(trader => {
    if (uniqueSymbols.includes(trader.symbol)) return;
    else uniqueSymbols.push(trader.symbol);
   });
