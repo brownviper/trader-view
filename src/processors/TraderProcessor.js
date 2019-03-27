@@ -1,6 +1,6 @@
 // @flow
 
-import Traders from '../types/traders';
+import {Traders} from '../types/traders';
 
 class TraderProcessor {
  traders: Traders = [];
@@ -40,10 +40,20 @@ class TraderProcessor {
     symbol: item.symbol,
     dividendYield,
     peRatio: this.calculatePeRatio(dividendYield, parseFloat(tradeCollection.price)),
-    geometricMean: 1.0,
+    geometricMean: this.calculateGeometricMean(tradeCollection),
     volumeWeighted: 1.0
    }
   });
+ }
+
+ static calculateGeometricMean(collection: Traders) {
+  var accumulator = 1.0;
+
+  collection.forEach(item => {
+   accumulator = accumulator * parseFloat(item.price);
+  });
+
+  return Math.pow(accumulator, 1/collection.length).toPrecision(2);
  }
 
  static calculateDividendYield(dividend: number, collection: Traders) {

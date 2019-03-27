@@ -106,10 +106,31 @@ describe('trade stock processor', () => {
             }
         ];
 
-        expect(TradeProcessor.calculateDividendYield(1.2, traders)).toEqual("2.7");
+        expect(TradeProcessor.calculateDividendYield(1.2, traders)).toEqual('2.7');
     });
 
     it('should calculate the PE/Ratio', () => {
        expect(TradeProcessor.calculatePeRatio(2.7, 45.00)).toEqual('17');
+    });
+
+    it('should calculate the GeometricMean', () => {
+        const traders: Traders = [
+            {
+                id: '',
+                symbol: '',
+                price: '10.00',
+                count: '',
+                timeStamp: ''
+            },
+            {
+                id: '',
+                symbol: '',
+                price: '45.00',
+                count: '',
+                timeStamp: ''
+            }
+        ];
+
+       expect(TradeProcessor.calculateGeometricMean(traders)).toEqual('21');
     });
 });
