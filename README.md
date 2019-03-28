@@ -5,9 +5,9 @@ an exercise in react/redux
 - yarn test
 - yarn start
 
-#####Notes:
+#Notes:
 only happy paths are considered, no user input validation is performed.
-#####TraderProcessor
+#TraderProcessor
 contains the business logic for stock calculation. </br>
 a fixed arbitrary attribute value of 7.08 is used for Dividend Yield calculations.
 
