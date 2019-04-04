@@ -31,8 +31,8 @@ class StockTable extends Component<Props> {
                         <tr>
                             <th />
                             <th>Symbol</th>
-                            <th>Dividend Yield (fixed div=7.08)</th>
-                            <th>P/E Ratio</th>
+                            <th>Dividend Yield</th>
+                            <th>P/E Ratio (%)</th>
                             <th>Geometric Mean</th>
                             <th>Weighted Stock Price</th>
                         </tr>

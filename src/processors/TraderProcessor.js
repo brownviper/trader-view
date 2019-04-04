@@ -1,6 +1,8 @@
 // @flow
 
 import {Traders} from '../types/traders';
+import SampleProvider from './SampleProvider';
+import type {SampleData} from "../types/traders";
 
 class TraderProcessor {
  traders: Traders = [];
@@ -30,8 +32,12 @@ class TraderProcessor {
  }
 
  calculateStockExchangeParams() {
+
+  var samples = new SampleProvider();
+
   return this.arrangeTraders().map(tradeCollection => {
-   const dividendYield = TraderProcessor.calculateDividendYield(7.08, tradeCollection.traders);
+   var knownSample = samples.extractSamplesForTrader(tradeCollection.traders[0]);
+   const dividendYield = TraderProcessor.calculateDividendYield(knownSample, tradeCollection.traders);
 
    return {
     symbol: tradeCollection.symbol,
@@ -41,16 +47,21 @@ class TraderProcessor {
         TraderProcessor.orderTraders(tradeCollection.traders)[0].price
     ),
     geometricMean: TraderProcessor.calculateGeometricMean(tradeCollection.traders),
-    volumeWeighted: TraderProcessor.caclcuateVolumeWeightedStockPrice(tradeCollection.traders)
+    volumeWeighted: TraderProcessor.caclculateVolumeWeightedStockPrice(tradeCollection.traders)
    }
   });
  }
 
  static calculatePeRatio(dividendYield: number, price: number) {
-  return (price/dividendYield).toFixed(2);
+
+  if (dividendYield == 0.0) {
+   return '0.0';
+  } else {
+   return (price / dividendYield).toFixed(2).toString();
+  }
  }
 
- static caclcuateVolumeWeightedStockPrice(collection: Traders) {
+ static caclculateVolumeWeightedStockPrice(collection: Traders) {
   var numerator = 0.0;
   var denominator = 0.0;
 
@@ -78,11 +89,15 @@ class TraderProcessor {
   });
  }
 
- static calculateDividendYield(dividend: number, collection: Traders) {
-
+ static calculateDividendYield(knownSample: SampleData, collection: Traders) {
   const sortedTraders = TraderProcessor.orderTraders(collection);
+  const price = parseFloat(sortedTraders[0].price);
 
-  return (dividend / parseFloat(sortedTraders[0].price) * 100.00).toFixed(2);
+  if (knownSample.tradeType === 'common') {
+   return (knownSample.lastDividend/price).toFixed(2);
+  } else {
+   return ((knownSample.fixedDividend * knownSample.parValue)/price).toPrecision(2);
+  }
  }
 }
 

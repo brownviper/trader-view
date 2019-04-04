@@ -3,6 +3,7 @@ export type TimeStamp = string;
 export type Symbol = string;
 export type Price = string;
 export type Shares = string;
+export type TradeType = string;
 
 export type Trader = {
     +id: Id,
@@ -26,4 +27,10 @@ export type TradersAction = {
     +timeStamp: TimeStamp
 };
 
-
+export type SampleData = {
+    symbol: Symbol,
+    tradeType: TradeType,
+    lastDividend: number,
+    fixedDividend: number,
+    parValue: number
+};

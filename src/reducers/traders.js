@@ -1,6 +1,6 @@
 // @flow
 
-import type { Traders, Trader, Id, TimeStamp } from '../types/traders';
+import type { Traders, Trader, Id, TradeType, TimeStamp } from '../types/traders';
 import type { Action } from '../types';
 
 const createTrader = (id: Id, symbol: Symbol, price: Price, count: Shares, timeStamp: TimeStamp): Trader => ({

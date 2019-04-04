@@ -8,6 +8,10 @@ an exercise in react/redux
 ### Notes:
 only happy paths are considered, no user input validation is performed.
 ### TraderProcessor
-contains the business logic for stock calculation. </br>
-a fixed arbitrary attribute value of 7.08 is used for Dividend Yield calculations.
+</br>contains the business logic for stock calculation.
+</br>initial data for traders provided are store internally. 
+</br>any new trade added with follow the common type route with the following stock data assumed
+
+type = preferred, FixedDividend=3%, parValue=100<br/>
+
 

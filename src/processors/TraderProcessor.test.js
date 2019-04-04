@@ -88,7 +88,7 @@ describe('trade stock processor', () => {
         expect(processor.arrangeTraders()).toEqual(expectedArrangedTraders);
     });
 
-    it('should calculate the dividend yield given traders and ', () => {
+    it('should calculate the dividend yield given traders for preferred trade types', () => {
         const traders: Traders = [
             {
                 id: '',
@@ -106,7 +106,41 @@ describe('trade stock processor', () => {
             }
         ];
 
-        expect(TradeProcessor.calculateDividendYield(1.2, traders)).toEqual('2.67');
+        expect(TradeProcessor.calculateDividendYield(
+            {
+                tradeType: 'preferred',
+                fixedDividend: 3,
+                parValue: 100
+            },
+            traders)
+        ).toEqual('6.7');
+    });
+
+    it('should calculate the dividend yield given traders for common trade types', () => {
+        const traders: Traders = [
+            {
+                id: '',
+                symbol: '',
+                price: '10.00',
+                count: '',
+                timeStamp: 'Wed Mar 27 2019 14:09:24 GMT+0000 (Greenwich Mean Time)'
+            },
+            {
+                id: '',
+                symbol: '',
+                price: '45.00',
+                count: '',
+                timeStamp: 'Wed Mar 28 2019 14:09:24 GMT+0000 (Greenwich Mean Time)'
+            }
+        ];
+
+        expect(TradeProcessor.calculateDividendYield(
+            {
+                tradeType: 'common',
+                lastDividend: 12
+            },
+            traders)
+        ).toEqual('0.27');
     });
 
     it('should calculate the PE/Ratio', () => {
@@ -152,7 +186,7 @@ describe('trade stock processor', () => {
             }
         ];
 
-       expect(TradeProcessor.caclcuateVolumeWeightedStockPrice(traders)).toEqual('33.33');
+       expect(TradeProcessor.caclculateVolumeWeightedStockPrice(traders)).toEqual('33.33');
     });
 
     it('should return the full stock exchange data', () => {
@@ -183,15 +217,15 @@ describe('trade stock processor', () => {
         const expected = [
             {
                 symbol: 'aaa',
-                dividendYield: '70.80',
-                peRatio: '0.14',
+                dividendYield: '0.30',
+                peRatio: '33.33',
                 geometricMean: '21.21',
                 volumeWeighted: '33.33'
             },
             {
                 symbol: 'bbb',
-                dividendYield: '15.73',
-                peRatio: '2.86',
+                dividendYield: '0.067',
+                peRatio: '671.64',
                 geometricMean: '45.00',
                 volumeWeighted: '45.00'
             }

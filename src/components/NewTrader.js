@@ -54,6 +54,7 @@ class NewTrader extends Component<Props, State> {
             symbol: '',
             price: '',
             count: ''
+
         });
     };
 
