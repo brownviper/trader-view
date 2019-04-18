@@ -5,7 +5,7 @@ import type { State } from '../types';
 import TraderProcessor from "../processors/TraderProcessor";
 
 export type Props = {
-    traders: Traders
+    traders: Trades
 }
 
 

@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addTrader } from '../actions/traders';
+import { addTrade } from '../actions/trades';
 
 import type { Dispatch } from '../types';
 import type {Price, Shares, Symbol} from "../types/traders";
@@ -18,7 +18,7 @@ export type State = {
     count: Shares
 };
 
-class NewTrader extends Component<Props, State> {
+class NewTrade extends Component<Props, State> {
     state = {
         symbol: '',
         price: '',
@@ -49,7 +49,7 @@ class NewTrader extends Component<Props, State> {
             return;
         }
 
-        this.props.dispatch(addTrader(this.state.symbol, this.state.price, this.state.count, new Date().toString()));
+        this.props.dispatch(addTrade(this.state.symbol, this.state.price, this.state.count, new Date().toString()));
         this.setState({
             symbol: '',
             price: '',
@@ -86,4 +86,4 @@ class NewTrader extends Component<Props, State> {
     }
 }
 
-export default connect()(NewTrader);
+export default connect()(NewTrade);

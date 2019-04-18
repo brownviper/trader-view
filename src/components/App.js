@@ -2,14 +2,14 @@ import React from 'react';
 
 import '../assets/App.css';
 
-import NewTrader from './NewTrader';
-import TradersTable from './TradersTable';
+import NewTrade from './NewTrade';
+import TradesTable from './TradesTable';
 import StockTable from './StockTable';
 
 const App = () => (
   <div className="App">
-    <NewTrader />
-    <TradersTable />
+    <NewTrade />
+    <TradesTable />
     <StockTable />
   </div>
 );

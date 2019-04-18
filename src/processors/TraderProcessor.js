@@ -1,13 +1,13 @@
 // @flow
 
-import {Traders} from '../types/traders';
+import {Trades} from '../types/traders';
 import SampleProvider from './SampleProvider';
 import type {SampleData} from "../types/traders";
 
 class TraderProcessor {
- traders: Traders = [];
+ traders: Trades = [];
 
- constructor(traders: Traders){
+ constructor(traders: Trades){
   this.traders = traders;
  }
 
@@ -61,7 +61,7 @@ class TraderProcessor {
   }
  }
 
- static caclculateVolumeWeightedStockPrice(collection: Traders) {
+ static caclculateVolumeWeightedStockPrice(collection: Trades) {
   var numerator = 0.0;
   var denominator = 0.0;
 
@@ -73,7 +73,7 @@ class TraderProcessor {
   return (numerator / denominator).toFixed(2);
  }
 
- static calculateGeometricMean(collection: Traders) {
+ static calculateGeometricMean(collection: Trades) {
   var accumulator = 1.0;
 
   collection.forEach(item => {
@@ -83,13 +83,13 @@ class TraderProcessor {
   return Math.pow(accumulator, 1/collection.length).toFixed(2);
  }
 
- static orderTraders(traders: Traders) {
+ static orderTraders(traders: Trades) {
   return traders.sort((a, b) => {
    return new Date(b.timeStamp) - new Date(a.timeStamp)
   });
  }
 
- static calculateDividendYield(knownSample: SampleData, collection: Traders) {
+ static calculateDividendYield(knownSample: SampleData, collection: Trades) {
   const sortedTraders = TraderProcessor.orderTraders(collection);
   const price = parseFloat(sortedTraders[0].price);
 

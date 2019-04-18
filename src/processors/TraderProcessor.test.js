@@ -1,11 +1,11 @@
 // @flow
 
 import TradeProcessor from './TraderProcessor';
-import {Traders} from '../types/traders';
+import {Trades} from '../types/traders';
 
 describe('trade stock processor', () => {
     it('should extract an array that contain unique symbols', () => {
-        const traders: Traders = [
+        const traders: Trades = [
             {
                 id: '',
                 symbol: 'aaa',
@@ -41,8 +41,8 @@ describe('trade stock processor', () => {
         expect(processor.getUniqueSymbols()).toEqual(['aaa', 'bbb']);
     });
 
-    it('should arrange the traders based on Symbol', () => {
-        const traders: Traders = [
+    it('should arrange the trades based on Symbol', () => {
+        const traders: Trades = [
             {
                 id: '',
                 symbol: 'aaa',
@@ -88,8 +88,8 @@ describe('trade stock processor', () => {
         expect(processor.arrangeTraders()).toEqual(expectedArrangedTraders);
     });
 
-    it('should calculate the dividend yield given traders for preferred trade types', () => {
-        const traders: Traders = [
+    it('should calculate the dividend yield given trades for preferred trade types', () => {
+        const traders: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -116,8 +116,8 @@ describe('trade stock processor', () => {
         ).toEqual('6.7');
     });
 
-    it('should calculate the dividend yield given traders for common trade types', () => {
-        const traders: Traders = [
+    it('should calculate the dividend yield given trades for common trade types', () => {
+        const traders: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -148,7 +148,7 @@ describe('trade stock processor', () => {
     });
 
     it('should calculate the GeometricMean', () => {
-        const traders: Traders = [
+        const traders: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -169,7 +169,7 @@ describe('trade stock processor', () => {
     });
 
     it('should calculate the Volume Weighted Stock Price', () => {
-        const traders: Traders = [
+        const traders: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -190,7 +190,7 @@ describe('trade stock processor', () => {
     });
 
     it('should return the full stock exchange data', () => {
-        const traders: Traders = [
+        const traders: Trades = [
             {
                 id: '',
                 symbol: 'aaa',

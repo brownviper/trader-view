@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TradersTable from './TradersTable'
+import TradersTable from './TradesTable'
 
 xit('renders without crashing', () => {
     const div = document.createElement('div');

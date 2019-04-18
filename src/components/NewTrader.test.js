@@ -5,11 +5,11 @@ import ReactDOM from 'react-dom';
 import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 
-import NewTrader from './NewTrader';
+import NewTrade from './NewTrade';
 
 const setup = (setupProps = {}) => {
     const store = configureStore()({ traders: [] });
-    const wrapper = shallow(<NewTrader store={store} />);
+    const wrapper = shallow(<NewTrade store={store} />);
 
     return {
         store,
@@ -43,7 +43,7 @@ xit('onSubmit dispatches action if input.value is set', () => {
 
     expect(preventDefault).toHaveBeenCalled();
     expect(store.getActions()).toEqual([
-        { id: 0, type: 'ADD_TRADER', timeStamp: jest.any}
+        { id: 0, type: 'ADD_TRADE', timeStamp: jest.any}
     ]);
 });
 

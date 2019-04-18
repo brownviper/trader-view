@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import type { State } from '../types';
 
 export type Props = {
-    traders: Traders
+    traders: Trades
 }
-class TradersTable extends Component<Props> {
+class TradesTable extends Component<Props> {
 
     props = {
         traders: []
@@ -64,4 +64,4 @@ const connector = connect(
     mapStateToProps
 );
 
-export default connector(TradersTable);
+export default connector(TradesTable);

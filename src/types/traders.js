@@ -12,14 +12,14 @@ export type Trader = {
     +count: Shares,
     +timeStamp: TimeStamp
 };
-export type Traders = Array<Trader>;
+export type Trades = Array<Trader>;
 
 export type TradersState = {
-    +traders: Traders
+    +traders: Trades
 };
 
 export type TradersAction = {
-    type: 'ADD_TRADER',
+    type: 'ADD_TRADE',
     +id: Id,
     +symbol: Symbol,
     +price: Price,

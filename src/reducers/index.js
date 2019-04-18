@@ -1,8 +1,8 @@
 
 import { combineReducers } from 'redux';
 
-import traders from './traders';
+import trades from './trades';
 
 export default combineReducers({
-    traders
+    traders: trades
 });
