@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Table} from 'reactstrap';
 import { connect } from 'react-redux';
 import type { State } from '../types';
-import TraderProcessor from "../processors/TraderProcessor";
+import TradeProcessor from "../processors/TradeProcessor";
 
 export type Props = {
     traders: Trades
@@ -16,7 +16,7 @@ class StockTable extends Component<Props> {
     };
 
     render() {
-        const data = new TraderProcessor(this.props.traders).calculateStockExchangeParams();
+        const data = new TradeProcessor(this.props.traders).calculateStockExchangeParams();
 
             const divStyle = {
               margin: '50px'

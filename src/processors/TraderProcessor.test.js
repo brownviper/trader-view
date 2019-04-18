@@ -1,6 +1,6 @@
 // @flow
 
-import TradeProcessor from './TraderProcessor';
+import TradeProcessor from './TradeProcessor';
 import {Trades} from '../types/traders';
 
 describe('trade stock processor', () => {

@@ -4,7 +4,7 @@ import {Trades} from '../types/traders';
 import SampleProvider from './SampleProvider';
 import type {SampleData} from "../types/traders";
 
-class TraderProcessor {
+class TradeProcessor {
  traders: Trades = [];
 
  constructor(traders: Trades){
@@ -37,17 +37,17 @@ class TraderProcessor {
 
   return this.arrangeTraders().map(tradeCollection => {
    var knownSample = samples.extractSamplesForTrader(tradeCollection.traders[0]);
-   const dividendYield = TraderProcessor.calculateDividendYield(knownSample, tradeCollection.traders);
+   const dividendYield = TradeProcessor.calculateDividendYield(knownSample, tradeCollection.traders);
 
    return {
     symbol: tradeCollection.symbol,
     dividendYield,
-    peRatio: TraderProcessor.calculatePeRatio(
+    peRatio: TradeProcessor.calculatePeRatio(
         dividendYield,
-        TraderProcessor.orderTraders(tradeCollection.traders)[0].price
+        TradeProcessor.orderTraders(tradeCollection.traders)[0].price
     ),
-    geometricMean: TraderProcessor.calculateGeometricMean(tradeCollection.traders),
-    volumeWeighted: TraderProcessor.caclculateVolumeWeightedStockPrice(tradeCollection.traders)
+    geometricMean: TradeProcessor.calculateGeometricMean(tradeCollection.traders),
+    volumeWeighted: TradeProcessor.caclculateVolumeWeightedStockPrice(tradeCollection.traders)
    }
   });
  }
@@ -90,7 +90,7 @@ class TraderProcessor {
  }
 
  static calculateDividendYield(knownSample: SampleData, collection: Trades) {
-  const sortedTraders = TraderProcessor.orderTraders(collection);
+  const sortedTraders = TradeProcessor.orderTraders(collection);
   const price = parseFloat(sortedTraders[0].price);
 
   if (knownSample.tradeType === 'common') {
@@ -101,4 +101,4 @@ class TraderProcessor {
  }
 }
 
-export default TraderProcessor;
+export default TradeProcessor;
