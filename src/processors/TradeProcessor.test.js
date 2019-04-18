@@ -5,7 +5,7 @@ import {Trades} from '../types/trades';
 
 describe('trade stock processor', () => {
     it('should extract an array that contain unique symbols', () => {
-        const traders: Trades = [
+        const trades: Trades = [
             {
                 id: '',
                 symbol: 'aaa',
@@ -36,13 +36,13 @@ describe('trade stock processor', () => {
 
         ];
 
-        const processor: TradeProcessor = new TradeProcessor(traders);
+        const processor: TradeProcessor = new TradeProcessor(trades);
 
         expect(processor.getUniqueSymbols()).toEqual(['aaa', 'bbb']);
     });
 
     it('should arrange the trades based on Symbol', () => {
-        const traders: Trades = [
+        const trades: Trades = [
             {
                 id: '',
                 symbol: 'aaa',
@@ -73,19 +73,19 @@ describe('trade stock processor', () => {
 
         ];
 
-        const processor: TradeProcessor = new TradeProcessor(traders);
-        const expectedArrangedTraders = [
+        const processor: TradeProcessor = new TradeProcessor(trades);
+        const expectedArrangedTrades = [
             {
                 symbol: 'aaa',
-                traders: [traders[0], traders[2]]
+                traders: [trades[0], trades[2]]
             },
             {
                 symbol: 'bbb',
-                traders: [traders[1], traders[3]]
+                traders: [trades[1], trades[3]]
             }
         ];
 
-        expect(processor.arrangeTrades()).toEqual(expectedArrangedTraders);
+        expect(processor.arrangeTrades()).toEqual(expectedArrangedTrades);
     });
 
     it('should calculate the dividend yield given trades for preferred trade types', () => {

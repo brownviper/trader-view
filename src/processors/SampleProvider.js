@@ -41,13 +41,13 @@ class SampleProvider {
         );
     }
 
-    extractSamplesForTrader(trader: Trade) {
+    extractSamplesForTrader(trade: Trade) {
 
-        var recordedSamples = this.data.find(item => item.symbol === trader.symbol);
+        var recordedSamples = this.data.find(item => item.symbol === trade.symbol);
 
         if(recordedSamples === undefined) {
             return {
-                symbol: trader.symbol,
+                symbol: trade.symbol,
                 fixedDividend: 0.03,
                 tradeType: 'preferred',
                 parValue: 100
