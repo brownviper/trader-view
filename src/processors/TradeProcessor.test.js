@@ -85,7 +85,7 @@ describe('trade stock processor', () => {
             }
         ];
 
-        expect(processor.arrangeTraders()).toEqual(expectedArrangedTraders);
+        expect(processor.arrangeTrades()).toEqual(expectedArrangedTraders);
     });
 
     it('should calculate the dividend yield given trades for preferred trade types', () => {
