@@ -1,6 +1,6 @@
 // @flow
 
-import {Trader, SampleData} from '../types/traders';
+import {Trade, SampleData} from '../types/trades';
 
 class SampleProvider {
     data: Array<SampleData> = [];
@@ -41,7 +41,7 @@ class SampleProvider {
         );
     }
 
-    extractSamplesForTrader(trader: Trader) {
+    extractSamplesForTrader(trader: Trade) {
 
         var recordedSamples = this.data.find(item => item.symbol === trader.symbol);
 

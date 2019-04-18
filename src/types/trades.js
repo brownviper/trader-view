@@ -5,20 +5,20 @@ export type Price = string;
 export type Shares = string;
 export type TradeType = string;
 
-export type Trader = {
+export type Trade = {
     +id: Id,
     +symbol: Symbol,
     +price: Price,
     +count: Shares,
     +timeStamp: TimeStamp
 };
-export type Trades = Array<Trader>;
+export type Trades = Array<Trade>;
 
-export type TradersState = {
+export type TradesState = {
     +traders: Trades
 };
 
-export type TradersAction = {
+export type TradesAction = {
     type: 'ADD_TRADE',
     +id: Id,
     +symbol: Symbol,

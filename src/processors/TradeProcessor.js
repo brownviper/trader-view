@@ -1,8 +1,8 @@
 // @flow
 
-import {Trades} from '../types/traders';
+import {Trades} from '../types/trades';
 import SampleProvider from './SampleProvider';
-import type {SampleData} from "../types/traders";
+import type {SampleData} from "../types/trades";
 
 class TradeProcessor {
  traders: Trades = [];

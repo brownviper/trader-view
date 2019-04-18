@@ -26,7 +26,7 @@ class TradesTable extends Component<Props> {
         return (
 
             <div className='container' style={divStyle}>
-                <h3>Traders Table</h3>
+                <h3>Trades Table</h3>
                 <div>
                     <Table striped>
                         <thead>

@@ -1,7 +1,7 @@
 // @flow
 
 import TradeProcessor from './TradeProcessor';
-import {Trades} from '../types/traders';
+import {Trades} from '../types/trades';
 
 describe('trade stock processor', () => {
     it('should extract an array that contain unique symbols', () => {

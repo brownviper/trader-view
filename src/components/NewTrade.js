@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addTrade } from '../actions/trades';
 
 import type { Dispatch } from '../types';
-import type {Price, Shares, Symbol} from "../types/traders";
+import type {Price, Shares, Symbol} from "../types/trades";
 
 export type Props = {
     dispatch: Dispatch
@@ -68,7 +68,7 @@ class NewTrade extends Component<Props, State> {
                     <form onSubmit={this.handleFormSubmit}>
                         <div className="form-group">
                             <label>Symbol</label>
-                            <input className="form-control" placeholder="enter trader symbol" value={this.state.symbol} onChange={this.handleSymbolChange}/>
+                            <input className="form-control" placeholder="enter trade symbol" value={this.state.symbol} onChange={this.handleSymbolChange}/>
                         </div>
                         <div className="form-group">
                             <label>Price</label>
@@ -78,7 +78,7 @@ class NewTrade extends Component<Props, State> {
                             <label>Shares count</label>
                             <input className="form-control" placeholder="total shares count" value={this.state.count} onChange={this.handleCountChange}/>
                         </div>
-                        <button className="btn btn-primary" type="submit">Add new trader</button>
+                        <button className="btn btn-primary" type="submit">Add new trade</button>
                     </form>
                 </div>
             </div>
