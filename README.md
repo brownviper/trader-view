@@ -7,9 +7,9 @@ an exercise in react/redux
 
 ### Notes:
 only happy paths are considered, no user input validation is performed.
-### TraderProcessor
+### TradeProcessor
 </br>contains the business logic for stock calculation.
-</br>initial data for traders provided (TEA, POP, ALE, GIN, JOE) are store internally. 
+</br>initial data for trades provided (TEA, POP, ALE, GIN, JOE) are store internally. 
 </br>any new trade added will follow the preferred type route with the following stock data assumed
 
 type = preferred, FixedDividend=3%, parValue=100<br/>

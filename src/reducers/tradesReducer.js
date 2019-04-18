@@ -11,7 +11,7 @@ const createTrade = (id: Id, symbol: Symbol, price: Price, count: Shares, timeSt
     timeStamp
 });
 
-const trades = (state: Trades = [], action: Action): Trades => {
+const tradesReducer = (state: Trades = [], action: Action): Trades => {
     switch (action.type) {
         case 'ADD_TRADE':
             return [...state, createTrade(action.id, action.symbol, action.price, action.count, action.timeStamp)];
@@ -20,4 +20,4 @@ const trades = (state: Trades = [], action: Action): Trades => {
     }
 };
 
-export default trades;
+export default tradesReducer;

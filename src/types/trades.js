@@ -15,7 +15,7 @@ export type Trade = {
 export type Trades = Array<Trade>;
 
 export type TradesState = {
-    +traders: Trades
+    +trades: Trades
 };
 
 export type TradesAction = {

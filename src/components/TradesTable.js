@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import type { State } from '../types';
 
 export type Props = {
-    traders: Trades
+    trades: Trades
 }
 class TradesTable extends Component<Props> {
 
     props = {
-        traders: []
+        trades: []
     };
 
     render() {
-        const sortedTraders = this.props.traders.sort((a, b) => {
+        const sortedTrades = this.props.trades.sort((a, b) => {
             return new Date(b.timeStamp) - new Date(a.timeStamp)
         });
 
@@ -38,13 +38,13 @@ class TradesTable extends Component<Props> {
                             </tr>
                         </thead>
                         <tbody>
-                            {sortedTraders.map(trader => {
+                            {sortedTrades.map(trade => {
                                 return (
-                                    <tr key={trader.id}>
+                                    <tr key={trade.id}>
                                         <th />
-                                        <td>{trader.symbol}</td>
-                                        <td>{trader.price}</td>
-                                        <td>{trader.count}</td>
+                                        <td>{trade.symbol}</td>
+                                        <td>{trade.price}</td>
+                                        <td>{trade.count}</td>
                                     </tr>
                                 );
                             })}

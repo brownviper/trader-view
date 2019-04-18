@@ -41,7 +41,7 @@ describe('trade stock processor', () => {
         expect(processor.getUniqueSymbols()).toEqual(['aaa', 'bbb']);
     });
 
-    it('should arrange the trades based on Symbol', () => {
+    it('should arrange the tradesReducer based on Symbol', () => {
         const trades: Trades = [
             {
                 id: '',
@@ -77,19 +77,19 @@ describe('trade stock processor', () => {
         const expectedArrangedTrades = [
             {
                 symbol: 'aaa',
-                traders: [trades[0], trades[2]]
+                trades: [trades[0], trades[2]]
             },
             {
                 symbol: 'bbb',
-                traders: [trades[1], trades[3]]
+                trades: [trades[1], trades[3]]
             }
         ];
 
         expect(processor.arrangeTrades()).toEqual(expectedArrangedTrades);
     });
 
-    it('should calculate the dividend yield given trades for preferred trade types', () => {
-        const traders: Trades = [
+    it('should calculate the dividend yield given tradesReducer for preferred trade types', () => {
+        const trades: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -112,12 +112,12 @@ describe('trade stock processor', () => {
                 fixedDividend: 3,
                 parValue: 100
             },
-            traders)
+            trades)
         ).toEqual('6.7');
     });
 
-    it('should calculate the dividend yield given trades for common trade types', () => {
-        const traders: Trades = [
+    it('should calculate the dividend yield given tradesReducer for common trade types', () => {
+        const trades: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -139,7 +139,7 @@ describe('trade stock processor', () => {
                 tradeType: 'common',
                 lastDividend: 12
             },
-            traders)
+            trades)
         ).toEqual('0.27');
     });
 
@@ -148,7 +148,7 @@ describe('trade stock processor', () => {
     });
 
     it('should calculate the GeometricMean', () => {
-        const traders: Trades = [
+        const trades: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -165,11 +165,11 @@ describe('trade stock processor', () => {
             }
         ];
 
-       expect(TradeProcessor.calculateGeometricMean(traders)).toEqual('21.21');
+       expect(TradeProcessor.calculateGeometricMean(trades)).toEqual('21.21');
     });
 
     it('should calculate the Volume Weighted Stock Price', () => {
-        const traders: Trades = [
+        const trades: Trades = [
             {
                 id: '',
                 symbol: '',
@@ -186,11 +186,11 @@ describe('trade stock processor', () => {
             }
         ];
 
-       expect(TradeProcessor.caclculateVolumeWeightedStockPrice(traders)).toEqual('33.33');
+       expect(TradeProcessor.caclculateVolumeWeightedStockPrice(trades)).toEqual('33.33');
     });
 
     it('should return the full stock exchange data', () => {
-        const traders: Trades = [
+        const trades: Trades = [
             {
                 id: '',
                 symbol: 'aaa',
@@ -231,7 +231,7 @@ describe('trade stock processor', () => {
             }
         ];
 
-        const processor = new TradeProcessor(traders);
+        const processor = new TradeProcessor(trades);
 
         expect(processor.calculateStockExchangeParams()).toEqual(expected);
 

@@ -41,7 +41,7 @@ class SampleProvider {
         );
     }
 
-    extractSamplesForTrader(trade: Trade) {
+    extractSamplesForTrade(trade: Trade) {
 
         var recordedSamples = this.data.find(item => item.symbol === trade.symbol);
 

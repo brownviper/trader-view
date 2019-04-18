@@ -1,7 +1,7 @@
-import trades from './trades';
+import tradesReducer from './tradesReducer';
 
-describe('trades reducer', () => {
+describe('tradesReducer reducer', () => {
     it('should handle initial state', () => {
-        expect(trades(undefined, { type: '@@INIT' })).toEqual([]);
+        expect(tradesReducer(undefined, { type: '@@INIT' })).toEqual([]);
     });
 });

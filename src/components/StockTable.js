@@ -5,18 +5,18 @@ import type { State } from '../types';
 import TradeProcessor from "../processors/TradeProcessor";
 
 export type Props = {
-    traders: Trades
+    trades: Trades
 }
 
 
 class StockTable extends Component<Props> {
 
     props = {
-        traders: []
+        trades: []
     };
 
     render() {
-        const data = new TradeProcessor(this.props.traders).calculateStockExchangeParams();
+        const data = new TradeProcessor(this.props.trades).calculateStockExchangeParams();
 
             const divStyle = {
               margin: '50px'

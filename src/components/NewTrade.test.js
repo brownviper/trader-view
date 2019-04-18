@@ -8,7 +8,7 @@ import { shallow } from 'enzyme';
 import NewTrade from './NewTrade';
 
 const setup = (setupProps = {}) => {
-    const store = configureStore()({ traders: [] });
+    const store = configureStore()({ trades: [] });
     const wrapper = shallow(<NewTrade store={store} />);
 
     return {
@@ -37,7 +37,7 @@ xit('onSubmit dispatches action if input.value is set', () => {
 
     deeperWrapper
         .find('input')
-        .simulate('change', { currentTarget: { value: 'new trader' } });
+        .simulate('change', { currentTarget: { value: 'new trade' } });
 
     deeperWrapper.find('form').simulate('submit', { preventDefault });
 
