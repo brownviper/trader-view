@@ -1,5 +1,4 @@
 
-# trader-viewer
 ```
 /**
  * What's the issue with this component. Why?
@@ -31,14 +30,17 @@ render() {
   }
 }
 ```
+# trade-viewer
 
 ### an exercise in react/redux/html/css
 
-1. Allow creation of a new trader, automatically recording timestamp and accepting the following
+1- Allow creation of a new trade, automatically recording timestamp and accepting the following
 fields:
-a. Stock Symbol, Price, number of shares
+######a. Stock Symbol
+######b. Price, and
+######c. number of shares
 
-2. Display a table of trades entered in reverse chronological order which is updated after each
+2- Display a table of trades entered in reverse chronological order which is updated after each
 trade.
 
 yarn install
